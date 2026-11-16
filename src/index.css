@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --color-red-history: #B91C1C;
+  --color-gold-bronze: #D4A017;
+  --color-army-green: #355E3B;
+  --color-bg-light: #FFF8EC;
+  --color-bg-dark: #0F172A;
+  --color-card-dark: #1E293B;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* 1. NỀN SÁNG: Vàng ngà hoàng kim / kem di sản quý phái (#FFFDF7), đa tầng ánh sáng hổ phách & đỏ son */
+.museum-light-bg {
+  background-color: #FFFDF7;
+  background-image: 
+    radial-gradient(at 10% 8%, rgba(217, 119, 6, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 90%, rgba(185, 28, 28, 0.08) 0px, transparent 52%),
+    radial-gradient(at 50% 30%, rgba(245, 158, 11, 0.06) 0px, transparent 65%),
+    repeating-linear-gradient(45deg, rgba(217, 119, 6, 0.015) 0px, rgba(217, 119, 6, 0.015) 1px, transparent 1px, transparent 20px),
+    linear-gradient(180deg, #FFFDF7 0%, #FEF9EE 50%, #FCF3DE 100%);
+}
+
+/* 2. NỀN TỐI: Xanh thẫm quân sự & đen bóng đêm (#0B131E), ánh sáng vàng kim cổ & đỏ chiến dịch */
+.museum-dark-bg {
+  background-color: #0A1118;
+  background-image: 
+    radial-gradient(at 15% 10%, rgba(245, 158, 11, 0.18) 0px, transparent 52%),
+    radial-gradient(at 85% 85%, rgba(220, 38, 38, 0.14) 0px, transparent 56%),
+    radial-gradient(at 50% 45%, rgba(30, 41, 59, 0.5) 0px, transparent 75%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 1px, transparent 1px, transparent 24px),
+    linear-gradient(180deg, #0A1118 0%, #060B10 100%);
+}
+
+/* 3. CARD CHẾ ĐỘ SÁNG: Nổi bật rõ rệt khỏi nền ngà, gradient nhẹ ngọc trai, viền vàng đồng sắc sảo, đổ bóng mềm cao cấp */
+.museum-card-light {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF9 60%, #FFF8EC 100%);
+  border: 1.5px solid rgba(217, 119, 6, 0.45);
+  box-shadow: 
+    0 6px 20px -2px rgba(180, 100, 20, 0.10), 
+    0 2px 8px -1px rgba(15, 23, 42, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.museum-card-light:hover {
+  border-color: #DC2626;
+  box-shadow: 
+    0 14px 30px -3px rgba(220, 38, 38, 0.16), 
+    0 6px 16px -2px rgba(217, 119, 6, 0.14),
+    0 0 0 1px rgba(245, 158, 11, 0.35) inset;
+}
+
+/* 4. CARD CHẾ ĐỘ TỐI: Màu card #141F2D, tách bạch rõ ràng khỏi nền #0A1118, chữ trắng sáng và xám sáng */
+.museum-card-dark {
+  background: linear-gradient(145deg, #131E2B 0%, #0D1622 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.42);
+  box-shadow: 
+    0 10px 32px -4px rgba(0, 0, 0, 0.75), 
+    0 2px 10px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.museum-card-dark:hover {
+  border-color: #F59E0B;
+  box-shadow: 
+    0 16px 38px -3px rgba(245, 158, 11, 0.28), 
+    0 8px 24px -4px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(245, 158, 11, 0.25);
+}
+
+/* Section Card Container kiểu bảo tàng */
+.museum-section-light {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF8 50%, #FFF6E5 100%);
+  border: 2px solid rgba(217, 119, 6, 0.5);
+  box-shadow: 0 12px 32px -5px rgba(180, 100, 20, 0.14), 0 4px 14px -2px rgba(15, 23, 42, 0.06);
+}
+
+.museum-section-dark {
+  background: linear-gradient(135deg, #152230 0%, #0F1924 50%, #0A1118 100%);
+  border: 2px solid rgba(245, 158, 11, 0.48);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Định nghĩa chuẩn font-serif và font-sans hỗ trợ tiếng Việt toàn diện, không lỗi dấu hay nhảy phông */
+.font-serif, [class*="font-serif"] {
+  font-family: 'Lora', 'Merriweather', 'Be Vietnam Pro', Georgia, serif !important;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+.font-sans, [class*="font-sans"] {
+  font-family: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.font-vietnamese-quote {
+  font-family: 'Lora', 'Merriweather', 'Be Vietnam Pro', Georgia, serif;
+}
+
+/* Tinh chỉnh dấu tiếng Việt khi viết hoa */
+h1.uppercase, h2.uppercase, h3.uppercase, .uppercase {
+  letter-spacing: 0.025em; /* Tránh tracking quá chặt làm chạm hoặc đè dấu tiếng Việt */
+}
+
+/* Quy định độ tương phản cao cho chữ trong chế độ tối: Không sử dụng chữ xám tối chìm vào nền */
+.dark p, .dark span, .dark li, .dark label, .dark div {
+  /* Bảo đảm độ tương phản cao, chống chìm chữ */
+}
+
+/* Custom scrollbar for mobile museum tech look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 160, 23, 0.4);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 160, 23, 0.7);
+}
+

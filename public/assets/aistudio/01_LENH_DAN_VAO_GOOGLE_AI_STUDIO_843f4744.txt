@@ -1,0 +1,33 @@
+GIAP TRACE — YÊU CẦU PHÂN ẢNH KHÔNG TRÙNG (SAO CHÉP NGUYÊN KHỐI)
+
+Bạn đang chỉnh sửa ứng dụng GIAP TRACE về Đại tướng Võ Nguyên Giáp, viết bằng React + TypeScript + Vite. Tôi sẽ cung cấp gói ảnh GIAP_TRACE_THU_VIEN_ANH_KHONG_TRUNG.zip và/hoặc mã nguồn cập nhật.
+
+MỤC TIÊU:
+1. TUYỆT ĐỐI giữ nguyên bố cục UI, màu đỏ-vàng, menu, chữ, luồng điều hướng, logic trò chơi, radar, toàn bộ chức năng đang chạy. KHÔNG tạo lại dự án từ đầu.
+2. Phân ảnh một cách có CHỦ ĐÍCH: ảnh đúng chủ đề của từng thành phần, không dùng cùng một ảnh làm bìa cho nhiều chức năng. Không random ảnh mỗi lần render; phân bố ổn định theo slotId/mã thẻ/mốc lịch sử.
+3. Dùng ảnh trong public/assets/giap-curated/. Nhóm tu-anh-goc là ảnh từ bản export trước (chưa được xác minh là ảnh tư liệu chính thống). Nhóm minh-hoa-moi là hình minh họa SVG; tuyệt đối không gọi chúng là ảnh lịch sử gốc.
+4. Mỗi vùng hiển thị ảnh có khóa riêng: ví dụ `home.hero`, `timeline.m1`, `archive.arc-03`, `campaign.dien-bien`, `radar.dien-bien`, `challenge.quiz-001`, `decision.th-001`, `museum.item-xxx`. Cùng slotId phải luôn ra cùng URL; slotId khác không được lấy trùng URL.
+5. Trường hợp DUY NHẤT được dùng lặp là logo GIAP TRACE trên navbar hoặc phần nhận diện. Ảnh nhân vật có thể dùng cho trang bìa nếu cần, nhưng các album/thumbnail nội dung khác nhau không được lặp.
+6. Căn ảnh bằng `object-fit: cover` cho thumbnail; dùng `object-position` hợp lý, không cắt khuôn mặt, chữ trong ảnh hoặc hiện vật chính. Có aria-label/alt tiếng Việt.
+7. Trước khi hoàn thành, chạy rà soát: (a) URL có file thật trong /public, (b) không trùng URL ở các slot (trừ logo), (c) không thay đổi nội dung lịch sử, (d) `npm run build` thành công, (e) trên mobile không bị lỗi hình.
+
+PHÂN CHIA CHỨC NĂNG:
+- SplashView: ảnh bìa Đại tướng và cờ, duy nhất ở màn mở đầu.
+- HomeDashboard: bộ ảnh riêng cho từng thẻ/tin/tính năng; không được lặp lại ảnh bìa Splash và cùng một ảnh trên 3 ô.
+- TimelineView, museumData, milestoneExhibitionsData: ưu tiên ảnh đúng mốc thời gian (cội nguồn, tuổi trẻ, 1944, 1945, 1948, 1950, Điện Biên Phủ 1954, 1975, di sản).
+- MapView: ảnh địa danh và minh họa bản đồ, KHÔNG dùng ảnh chân dung chung cho tất cả địa điểm.
+- ArchiveLibraryView: ảnh sắc lệnh, thư, chữ ký, hiện vật; chỉ gắn nhãn ảnh tư liệu khi nguồn xác minh rõ.
+- CampaignCommandView: bản đồ chiến dịch, mô phỏng tác chiến và ảnh liên quan từng chiến dịch.
+- RadarTacticalView: dùng riêng nhóm radar, tọa độ, lực lượng; không lấy hình nhà quê hoặc ảnh chân dung làm sơ đồ tác chiến.
+- ChallengesView: ảnh câu hỏi, đồng hồ, mốc, huy hiệu; khác hoàn toàn trang bìa và kho lưu trữ.
+- DecisionsAndInsightsView: riêng hình cân nhắc, lựa chọn, phản biện và các tình huống. Phân biệt giả định với sự kiện thật.
+- BiographyDossierView: chân dung và tư liệu tiểu sử phù hợp theo giai đoạn.
+- MySpaceView / PersonalizedRecommendations: hình nhật ký, thành tích, học tập theo chủ đề.
+- Navbar / logo: được dùng lặp đúng 1 asset logo.
+
+TRIỂN KHAI:
+Hãy dùng công cụ `scripts/auto_patch.py` nếu môi trường chạy được Python, hoặc xem `src/data/giapImageMap.generated.ts` và `GIAP_TRACE_BANG_PHAN_BO_ANH.csv` để tích hợp đúng từng chỗ. Công cụ trong gói được phép áp dụng lên source hiện tại sau khi sao lưu.
+Đừng tự ý thay thế mã nguồn app đang chạy bằng bản cũ. Nếu cần phát sinh một slot mới, chọn ảnh CHƯA có trong danh sách sử dụng, đúng phân loại. Không tạo ảnh trùng bằng cách đặt tên khác.
+
+KIỂM TRA KHI XONG:
+Lập danh sách 4 cột: Tên chức năng | Slot | Tên ảnh | Tình trạng. Báo số URL ảnh trùng (mục tiêu = 0, không tính logo). Giữ nguyên khả năng triển khai Netlify.

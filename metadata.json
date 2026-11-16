@@ -1,0 +1,8 @@
+{
+  "name": "Remix Giap Trace",
+  "description": "Bảo tàng số tương tác tái hiện hành trình lịch sử qua bản đồ, mốc thời gian và tư liệu trực quan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
